@@ -483,18 +483,26 @@ class TreeImage
     }
   }
 
-  // TODO
-  // clean input of html
-
-  insert(n)
+  insert(value)
   {
-    this.#tree.insert(n);
-    this.draw();
+    if (value === undefined)
+      value = document.getElementById('value').value.trim();
+    if (value == "")
+      return ;
+    else if (isNaN(parseInt(value)))
+      return ;
+    else
+    {
+      this.#tree.insert(parseInt(value));
+      this.draw();
+      document.getElementById('value').value = "";
+    }
   }
 
   insert_range(start, end, step = 1)
   {
     for (let index = start, counter = 0; index < end && counter < 50; index+=step, counter++)
+      //this.insert(index);
      this.#tree.insert(index);
     this.draw();
   }
@@ -509,10 +517,20 @@ class TreeImage
     }
   }
 
-  erase(n)
+  erase(value)
   {
-    this.#tree.delete(n);
-    this.draw();
+    if (value === undefined)
+      value = document.getElementById('value').value.trim();
+    if (value == "")
+      return ;
+    else if (isNaN(parseInt(value)))
+      return ;
+    else
+    {
+      this.#tree.delete(parseInt(value));
+      this.draw();
+      document.getElementById('value').value = "";
+    }
   }
 
   erase_range(start, end, step = 1)
@@ -541,9 +559,14 @@ class TreeImage
 
 // TODO
 // change to private in RedBlackTree class
+// clean input of html
+// separate js files
 
 const canvas = new TreeImage();
 
-canvas.insert(76);
-canvas.insert(84);
-canvas.insert(42);
+function init()
+{
+  canvas.insert(76);
+  canvas.insert(84);
+  canvas.insert(42);
+}
