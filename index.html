@@ -1,33 +1,49 @@
 <!DOCTYPE html>
-<html>
-<!--<body>-->
+<html lang="en">
+<head>
+  <title>Red-Black Tree Visualization</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="author" content="LT">
+  <meta name="description" content="Red-Black Tree Visualization">
+  <script src="node.js"></script>
+  <script src="redblack.js"></script>
+  <script src="treeimage.js"></script>
+</head>
+
 <body onload="init()" onresize="canvas.draw()"></body>
 
-<canvas id="myCanvas" width="1000" height="1000" style="border:1px solid #d3d3d3;">
-Your browser does not support the HTML canvas tag.</canvas>
+<p> 
+  Enter an integer key and click the Insert button to insert it in the tree.
+  Click the Remove button to remove the key from the tree.
+  Enter a number and click the Random button to add that many random numbers in the tree.
+  Click the Clear button to clear the tree.
+  The maximum number elements that can be added in the tree is 50.
+</p>
 
-<script src="redblack.js"></script>
+<canvas id="myCanvas" width="1000" height="1000" style="border:1px solid #d3d3d3;">
+  Your browser does not support the HTML canvas tag.</canvas>
+
+
+
 
 <div style="text-align: center; margin-top: 1em">
-    <span style="border: 1px solid #37826C; padding: 3px">
-      Enter a key: <input type="text" value="" id="value" style="width: 3em; text-align: right">
-      <!--<button type="button" class = "button" onclick="search()">Search</button>-->
-      <button type="button" class="button" onclick="canvas.insert()">Insert</button>
-      <button type="button" class="button" onclick="canvas.erase()">Remove</button>
-      <button type="button" class="button" onclick="canvas.insert_random()">Random</button>
-      <button type="button" class="button" onclick="canvas.clear()">Clear</button>
-    </span>  
+  <span style="border: 1px solid #37826C; padding: 3px">
+    Enter a key: <input type="text" value="" id="value" style="width: 3em; text-align: right">
+    <button type="button" class="button" onclick="canvas.insert()">Insert</button>
+    <button type="button" class="button" onclick="canvas.erase()">Remove</button>
+    <button type="button" class="button" onclick="canvas.insert_random()">Random</button>
+    <button type="button" class="button" onclick="canvas.clear()">Clear</button>
+  </span>
 </div>
+
 <div style="text-align: center; margin-top: 1em">
   <span style="border: 1px solid #37826C; padding: 3px">
     Enter a range: <input type="text" value="" id="range1" style="width: 3em; text-align: right">
-  <input type="text" value="" id="range2" style="width: 3em; text-align: right">
-    <!--<button type="button" class = "button" onclick="search()">Search</button>-->
+    <input type="text" value="" id="range2" style="width: 3em; text-align: right">
     <button type="button" class="button" onclick="canvas.insert_range()">Insert</button>
     <button type="button" class="button" onclick="canvas.erase_range()">Remove</button>
   </span>
-  
 </div>
-
 </body>
 </html>
