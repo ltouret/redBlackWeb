@@ -143,7 +143,8 @@ class RedBlackTree
     }
   }
 
-  successor(x) {
+  successor(x)
+  {
     let temp = x;
  
     while (temp.left != null)
@@ -333,6 +334,13 @@ class RedBlackTree
  
   getRoot() {return this.#root;}
   getSize() {return this.#size;}
+  getMax()
+  {
+    let curr = this.#root;
+    while (curr.right != null)
+      curr = curr.right;
+    return curr;
+  }
  
   insert(n)
   {
@@ -458,6 +466,7 @@ class TreeImage
 
   // public :
 
+  // erase after!
   getSize() {return this.#tree.getSize();}
 
   draw()
@@ -501,20 +510,34 @@ class TreeImage
 
   insert_range(start, end, step = 1)
   {
+    if (start === undefined)
+      start = document.getElementById('range1').value.trim();
+    if (end === undefined)
+      end = document.getElementById('range2').value.trim();
+    if (start == "" || end == "")
+      return ;
+    else if (isNaN(parseInt(start)) || isNaN(parseInt(end)))
+      return ;
+    start = parseInt(start);
+    end = parseInt(end);
     for (let index = start, counter = 0; index < end && counter < 50; index+=step, counter++)
-      //this.insert(index);
-     this.#tree.insert(index);
+      this.#tree.insert(index);
     this.draw();
+    document.getElementById('range1').value = "";
+    document.getElementById('range2').value = "";
   }
 
-  insert_array(arr)
+  insert_random(max)
   {
-    if (Array.isArray(arr) == true)
-    {
-      for (const index of arr)
-        this.#tree.insert(index);
-      this.draw();
-    }
+    if (max === undefined)
+      max = document.getElementById('value').value.trim();
+    if (max == "")
+      max = 50;
+    else if (isNaN(parseInt(max)))
+      return ;
+    this.clear();
+    while(this.#tree.getSize() < max && this.#tree.getSize() < 50)
+      canvas.insert(Math.floor(Math.random() * 500) + 1);
   }
 
   erase(value)
@@ -535,9 +558,24 @@ class TreeImage
 
   erase_range(start, end, step = 1)
   {
-    for (let index = start; index < end; index+=step)
+    if (start === undefined)
+      start = document.getElementById('range1').value.trim();
+    if (end === undefined)
+      end = document.getElementById('range2').value.trim();
+    if (start == "" || end == "")
+      return ;
+    else if (isNaN(parseInt(start)) || isNaN(parseInt(end)))
+      return ;
+    start = parseInt(start);
+    end = parseInt(end);
+    if (end > this.#tree.getMax().value)
+      end = this.#tree.getMax().value + 1;
+    console.log(this.#tree.getMax(), end);
+      for (let index = start; index < end; index+=step)
       this.#tree.delete(index);
     this.draw();
+    document.getElementById('range1').value = "";
+    document.getElementById('range2').value = "";
   }
 
   erase_array(arr)
@@ -557,7 +595,12 @@ class TreeImage
   }
 };
 
+
 // TODO
+// erase comments
+// fix format
+// add credits to Y. Daniel Liang
+// erase getSize of TreeImage (canvas) class
 // change to private in RedBlackTree class
 // clean input of html
 // separate js files
@@ -569,4 +612,5 @@ function init()
   canvas.insert(76);
   canvas.insert(84);
   canvas.insert(42);
+
 }
