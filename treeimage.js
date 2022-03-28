@@ -64,9 +64,9 @@ class TreeImage {
   getSize() { return this.#tree.getSize(); }
 
   insert(value) {
-    document.getElementById('value').value = "";
     if (value === undefined)
       value = document.getElementById('value').value.trim();
+    document.getElementById('value').value = "";
     if (value == "")
       return;
     else if (isNaN(parseInt(value)))
@@ -78,12 +78,13 @@ class TreeImage {
   }
 
   insert_range(start, end, step = 1) {
-    document.getElementById('range1').value = "";
-    document.getElementById('range2').value = "";
+
     if (start === undefined)
       start = document.getElementById('range1').value.trim();
     if (end === undefined)
       end = document.getElementById('range2').value.trim();
+    document.getElementById('range1').value = "";
+    document.getElementById('range2').value = "";
     if (start == "" || end == "")
       return;
     else if (isNaN(parseInt(start)) || isNaN(parseInt(end)))
@@ -97,9 +98,9 @@ class TreeImage {
   }
 
   insert_random(max) {
-    document.getElementById('value').value = "";
     if (max === undefined)
       max = document.getElementById('value').value.trim();
+    document.getElementById('value').value = "";
     if (max == "")
       max = 50;
     else if (isNaN(parseInt(max)))
@@ -111,9 +112,9 @@ class TreeImage {
   }
 
   erase(value) {
-    document.getElementById('value').value = "";
     if (value === undefined)
       value = document.getElementById('value').value.trim();
+    document.getElementById('value').value = "";
     if (value == "")
       return;
     else if (isNaN(parseInt(value)))
@@ -125,12 +126,12 @@ class TreeImage {
   }
 
   erase_range(start, end, step = 1) {
-    document.getElementById('range1').value = "";
-    document.getElementById('range2').value = "";
     if (start === undefined)
       start = document.getElementById('range1').value.trim();
     if (end === undefined)
       end = document.getElementById('range2').value.trim();
+    document.getElementById('range1').value = "";
+    document.getElementById('range2').value = "";
     if (start == "" || end == "")
       return;
     else if (isNaN(parseInt(start)) || isNaN(parseInt(end)))
@@ -142,7 +143,6 @@ class TreeImage {
     for (let index = start; index < end; index += step)
       this.#tree.delete(index);
     this.draw();
-
   }
 
   clear() {
@@ -153,15 +153,3 @@ class TreeImage {
     this.draw();
   }
 };
-
-// TODO
-// add credits to Y. Daniel Liang
-// separate js files
-
-const canvas = new TreeImage();
-
-function init() {
-  canvas.insert(76); //L
-  canvas.insert(84); //T
-  canvas.insert(42); //42
-}

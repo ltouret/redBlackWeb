@@ -9,11 +9,21 @@
   <script src="node.js"></script>
   <script src="redblack.js"></script>
   <script src="treeimage.js"></script>
+  <script>
+    // TODO
+    // add credits to Y. Daniel Liang
+    const canvas = new TreeImage();
+    
+    function init() {
+      canvas.insert(76); //L
+      canvas.insert(84); //T
+      canvas.insert(42); //42
+    }
+  </script>
 </head>
 
-<body onload="init()" onresize="canvas.draw()"></body>
-
-<p> 
+<body onload="init()" onresize="canvas.draw()">
+<p>
   Enter an integer key and click the Insert button to insert it in the tree.
   Click the Remove button to remove the key from the tree.
   Enter a number and click the Random button to add that many random numbers in the tree.
@@ -23,9 +33,6 @@
 
 <canvas id="myCanvas" width="1000" height="1000" style="border:1px solid #d3d3d3;">
   Your browser does not support the HTML canvas tag.</canvas>
-
-
-
 
 <div style="text-align: center; margin-top: 1em">
   <span style="border: 1px solid #37826C; padding: 3px">
